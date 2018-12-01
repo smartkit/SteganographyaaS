@@ -17,3 +17,5 @@ https://spring.io/guides/tutorials/react-and-spring-data-rest/
 
 https://developer.okta.com/blog/2018/07/19/simple-crud-react-and-spring-boot
 
+https://dzone.com/articles/spring-boot-restful-api-documentation-with-swagger
+
