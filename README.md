@@ -11,6 +11,8 @@ https://www.developer.com/java/ent/article.php/3530866/Steganography-101-using-J
 
 https://github.com/harveyslash/Deep-Steganography
 
+https://github.com/DominicBreuker/stego-toolkit
+
 https://medium.com/@iguissouma/rapid-development-of-simple-crud-graphql-apis-in-java-and-spring-boot-bafc4e8d387a
 
 https://spring.io/guides/tutorials/react-and-spring-data-rest/
