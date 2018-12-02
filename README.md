@@ -19,3 +19,4 @@ https://developer.okta.com/blog/2018/07/19/simple-crud-react-and-spring-boot
 
 https://dzone.com/articles/spring-boot-restful-api-documentation-with-swagger
 
+https://github.com/leangen/graphql-spqr-spring-boot-starter
