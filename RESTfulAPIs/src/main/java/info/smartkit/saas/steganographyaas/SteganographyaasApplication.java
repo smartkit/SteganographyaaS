@@ -1,6 +1,6 @@
 package info.smartkit.saas.steganographyaas;
 
-import info.smartkit.saas.steganographyaas.model.Car;
+import info.smartkit.saas.steganographyaas.domain.Car;
 import info.smartkit.saas.steganographyaas.service.CarService;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.boot.SpringApplication;
