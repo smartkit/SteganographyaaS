@@ -24,3 +24,5 @@ https://dzone.com/articles/spring-boot-restful-api-documentation-with-swagger
 https://github.com/leangen/graphql-spqr-spring-boot-starter
 
 https://dzone.com/articles/on-graphql-and-building-an-application-using-react
+
+https://github.com/b3dk7/StegExpose
