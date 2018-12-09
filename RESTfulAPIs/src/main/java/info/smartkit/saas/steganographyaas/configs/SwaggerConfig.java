@@ -40,7 +40,7 @@ public class SwaggerConfig {
 	}
 	private ApiInfo apiInfo() {
 		ApiInfo apiInfo = new ApiInfo(
-				"SAAS.SMARTKIT.INFO REST API",
+				"Stegonagraphy.SMARTKIT.INFO REST API",
 				"SMARTKIT.INFO description of API.",
 				"API TOS",
 				"Terms of service",

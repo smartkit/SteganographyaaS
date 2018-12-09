@@ -1,0 +1,23 @@
+Foremost version 1.5.7 by Jesse Kornblum, Kris Kendall, and Nick Mikus
+Audit File
+
+Foremost started at Sun Dec  9 02:11:46 2018
+Invocation: foremost challenge.png 
+Output directory: /data/output
+Configuration file: /etc/foremost.conf
+------------------------------------------------------------------
+File: challenge.png
+Start: Sun Dec  9 02:11:46 2018
+Length: 3 MB (3488848 bytes)
+ 
+Num	 Name (bs=512)	       Size	 File Offset	 Comment 
+
+0:	00000000.png 	       3 MB 	          0 	  (2944 x 1912)
+Finish: Sun Dec  9 02:11:46 2018
+
+1 FILES EXTRACTED
+	
+png:= 1
+------------------------------------------------------------------
+
+Foremost finished at Sun Dec  9 02:11:47 2018
