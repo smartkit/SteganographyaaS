@@ -1,9 +1,7 @@
 package info.smartkit.saas.steganographyaas.controller;
 
 import info.smartkit.saas.steganographyaas.dto.StegonagraphyInfo;
-import info.smartkit.saas.steganographyaas.utils.EnumTest;
-import info.smartkit.saas.steganographyaas.utils.FileUtil;
-import info.smartkit.saas.steganographyaas.utils.StegonagraphyInfoHelper;
+import info.smartkit.saas.steganographyaas.utils.*;
 import io.swagger.annotations.ApiOperation;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -38,16 +36,39 @@ public class StegonagraphyController {
         ori, sml, ico
     }
 
-    // @see: https://spring.io/guides/gs/uploading-files/
-    @RequestMapping(method = RequestMethod.POST, value = "/stegonagraphy", consumes = MediaType.MULTIPART_FORM_DATA)
-    @ApiOperation(value = "Response a string describing OCR' picture is successfully uploaded or not.")
+    //Tools actually doing steganography
+    @RequestMapping(method = RequestMethod.POST, value = "/graphy", consumes = MediaType.MULTIPART_FORM_DATA)
+    @ApiOperation(value = "Response a string describing Stegona' picture is successfully graphied or not.", position = 1)
 //	@ApiImplicitParams({@ApiImplicitParam(name="Authorization", value="Authorization DESCRIPTION")})
     public @ResponseBody
-    StegonagraphyInfo StegonagraphyFileUpload(
-            @RequestParam(value = "language", required = false, defaultValue =
-                    "eng") String language,
-            // @RequestParam(value = "owner", required = false, defaultValue =
-            // "default_intellif_corp") String owner,
+    StegonagraphyInfo graphing(
+            @RequestParam(value = "tool", required = true, defaultValue =
+                    "openstego") StegonaGrahpyTools tool,
+            @RequestPart(value = "file") @Valid @NotNull @NotBlank MultipartFile secretTxt) {
+        return null;
+    }
+
+    //Tools detecting steganography
+    @RequestMapping(method = RequestMethod.POST, value = "/detect", consumes = MediaType.MULTIPART_FORM_DATA)
+    @ApiOperation(value = "Response a string describing Stegona' picture is successfully detedcted or not.", position = 3)
+//	@ApiImplicitParams({@ApiImplicitParam(name="Authorization", value="Authorization DESCRIPTION")})
+    public @ResponseBody
+    StegonagraphyInfo detecting(
+            @RequestParam(value = "tool", required = true, defaultValue =
+                    "zsteg") StegonaDetectTools tool,
+            @RequestPart(value = "file") @Valid @NotNull @NotBlank MultipartFile file) {
+        return null;
+    }
+
+    // @see: https://spring.io/guides/gs/uploading-files/
+    // General screening tools
+    @RequestMapping(method = RequestMethod.POST, value = "/screen", consumes = MediaType.MULTIPART_FORM_DATA)
+    @ApiOperation(value = "Response a string describing Stegona' picture is successfully screened or not.", position = 2)
+//	@ApiImplicitParams({@ApiImplicitParam(name="Authorization", value="Authorization DESCRIPTION")})
+    public @ResponseBody
+    StegonagraphyInfo screening(
+            @RequestParam(value = "tool", required = true, defaultValue =
+                    "file") StegonaScreenTools tool,
             @RequestPart(value = "file") @Valid @NotNull @NotBlank MultipartFile file) {
         // @Validated MultipartFileWrapper file, BindingResult result, Principal
         // principal){
@@ -147,14 +168,9 @@ public class StegonagraphyController {
         return _imageMagickOutput;
     }
 
-    public String getClassPath() {
+    private String getClassPath() {
         String classPath = this.getClass().getResource("/").getPath();
         return classPath;
-    }
-
-    @RequestMapping(value = "/test", method = RequestMethod.POST)
-    public void test(EnumTest enumT) {
-        // body
     }
 
 }
