@@ -1,5 +1,7 @@
 package info.smartkit.saas.steganographyaas.controller;
 
+import com.shekhargulati.reactivex.docker.client.RxDockerClient;
+import com.shekhargulati.reactivex.docker.client.representations.DockerVersion;
 import info.smartkit.saas.steganographyaas.dto.StegonagraphyInfo;
 import info.smartkit.saas.steganographyaas.utils.*;
 import io.swagger.annotations.ApiOperation;
@@ -45,6 +47,14 @@ public class StegonagraphyController {
             @RequestParam(value = "tool", required = true, defaultValue =
                     "openstego") StegonaGrahpyTools tool,
             @RequestPart(value = "file") @Valid @NotNull @NotBlank MultipartFile secretTxt) {
+        // Stegonagraphying:
+        //https://github.com/shekhargulati/rx-docker-client
+        //Create a new Docker client using DOCKER_HOST and DOCKER_CERT_PATH environment variables
+        RxDockerClient client = RxDockerClient.fromDefaultEnv();
+
+        // Getting Docker version
+        DockerVersion dockerVersion = client.serverVersion();
+        System.out.println(dockerVersion.version()); // 1.8.3
         return null;
     }
 
@@ -54,6 +64,19 @@ public class StegonagraphyController {
 //	@ApiImplicitParams({@ApiImplicitParam(name="Authorization", value="Authorization DESCRIPTION")})
     public @ResponseBody
     StegonagraphyInfo detecting(
+            @RequestParam(value = "tool", required = true, defaultValue =
+                    "zsteg") StegonaDetectTools tool,
+            @RequestPart(value = "file") @Valid @NotNull @NotBlank MultipartFile file) {
+        return null;
+    }
+
+    //Tools detecting steganography
+    //@see: https://github.com/jpducassou/StegExpose
+    @RequestMapping(method = RequestMethod.POST, value = "/expose", consumes = MediaType.MULTIPART_FORM_DATA)
+    @ApiOperation(value = "Response a string describing Stegona' picture is successfully exposed or not.", position = 3)
+//	@ApiImplicitParams({@ApiImplicitParam(name="Authorization", value="Authorization DESCRIPTION")})
+    public @ResponseBody
+    StegonagraphyInfo exposing(
             @RequestParam(value = "tool", required = true, defaultValue =
                     "zsteg") StegonaDetectTools tool,
             @RequestPart(value = "file") @Valid @NotNull @NotBlank MultipartFile file) {
@@ -86,14 +109,7 @@ public class StegonagraphyController {
                 LOG.info("ImageMagick output success: " + fileName);
                 String imageUrl = StegonagraphyInfoHelper.getRemoteImageUrl(fileName);
                 stegonagraphyInfo.setUri(imageUrl);
-                // Stegonagraphying:
-                //https://github.com/shekhargulati/rx-docker-client
-//                //Create a new Docker client using DOCKER_HOST and DOCKER_CERT_PATH environment variables
-//                RxDockerClient client = RxDockerClient.fromDefaultEnv();
 //
-//                // Getting Docker version
-//                DockerVersion dockerVersion = client.serverVersion();
-//                System.out.println(dockerVersion.version()); // 1.8.3
 
 
             } catch (Exception ex) {
